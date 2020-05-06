@@ -6,9 +6,20 @@
 from pynput import keyboard
 import threading
 import time
+import turtle
 
 
 flag = False
+
+screen = turtle.getscreen()
+screen.title("Snake Game")
+screen.bgcolor("white")
+screen.setup(width=500, height=500)
+
+head = turtle.Turtle()
+head.shape("square")
+head.color("green")
+
 
 # Here we define the snake character/object and give it initial values for the position. direction_x and _y are used to determine which direction. +1 is up or right and -1 is down or left
 class Snake:

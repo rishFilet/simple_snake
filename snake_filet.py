@@ -1,14 +1,26 @@
-# Snake has some position
-# create a movement corresponding to the movement
+# Snake has some position DONE 
+# create a movement corresponding to the movement DONE
 # Map the keyboard input to the movement 
 
 
 from pynput import keyboard
 import threading
 import time
+from turtle import Turtle, Screen
 
 
 flag = False
+
+class Gfx:
+    def __init__(self):
+        self.window = Screen()
+        self.window.bgcolor('black')
+        self.snake_object = Snake()
+        self.speed = self.snake_object.snake_speed
+
+    def start(self):
+        self.snake_object.snake.forward(self.speed)
+        self.window.ontimer(self.start, 10)
 
 # Here we define the snake character/object and give it initial values for the position. direction_x and _y are used to determine which direction. +1 is up or right and -1 is down or left
 class Snake:
@@ -18,6 +30,10 @@ class Snake:
         self.y = 0
         self.direction_x = 0
         self.direction_y = 0
+        self.snake = Turtle()
+        self.snake.color('green')
+        self.snake.penup()
+        self.snake_speed = 1
 
     #flag is a global variable used to determine when the loop should be stopped when a certain key is presed 
     def movement(self):
